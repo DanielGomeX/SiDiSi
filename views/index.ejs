@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app='sidisi'>
+
+<head>
+    <% include ../views/components/head %>
+</head>
+
+<body ng-controller='IndexController'>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header brown">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title"><%= title %></span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link clickable" ng-click="reload()"><i class="material-icons">autorenew</i></a>
+                    <a class="mdl-navigation__link" href="/settings"><i class="material-icons">settings</i></a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content" ng-init='activecard = 0'>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--8-col" ng-cloak>
+                        <% include ../views/components/card-clock %>
+                            <div ng-repeat='feed in feeds'>
+                                <% include ../views/components/card-feed %>
+                            </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col" ng-cloak>
+                        <% include ../views/components/card-weather %>
+                            <% include ../views/components/card-calendar %>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <% include ../views/components/scripts %>
+</body>
+
+</html>

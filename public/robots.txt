@@ -1,0 +1,4 @@
+# robots.txt news.sidisi.de (SiDiSi)
+
+User-agent: *
+Sitemap: https://news.sidisi.de/sitemap.xml

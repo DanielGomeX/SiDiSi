@@ -1,0 +1,13 @@
+{
+    "name": "OpenWeatherMap",
+    "url": "openweathermap",
+    "options": [{
+            "order": 0,
+            "name": "City"
+        },
+        {
+            "order": 1,
+            "name": "API Key"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "name": "sidisi-news",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node ./bin/www"
+    },
+    "dependencies": {
+        "ejs": "^2.5.2",
+        "express": "^4.14.0",
+        "xml2js": "^0.4.17"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/XiphWork/SiDiSi.git"
+    },
+    "keywords": [
+        "Sidisi",
+        "Simple Digital Signage",
+        "news",
+        "feed",
+        "weather"
+    ],
+    "author": "Christian Büchler",
+    "license": "MIT"
+}

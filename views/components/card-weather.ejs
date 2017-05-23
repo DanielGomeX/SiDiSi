@@ -1,0 +1,39 @@
+<div class="card-wide mdl-card mdl-shadow--2dp blue">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text white-text">{{weather.location}}</h2>
+    </div>
+    <div class="white-text">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-col">
+                <i class="wi wi-thermometer weather-icon"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col weather-text">
+                {{weather.temp}} °C
+            </div>
+            <div class="mdl-cell mdl-cell--1-col">
+                <i class="wi wi-humidity weather-icon"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col weather-text">
+                {{weather.humidity}} %
+            </div>
+        </div>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-col">
+                <i class="wi wi-sunrise weather-icon"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col weather-text">
+                {{weather.sunrise | date:'HH:mm'}}
+            </div>
+            <div class="mdl-cell mdl-cell--1-col">
+                <i class="wi wi-sunset weather-icon"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col weather-text">
+                {{weather.sunset | date:'HH:mm'}}
+            </div>
+        </div>
+
+        <div class='mdl-card__actual-weather'>
+            <i class="wi wi-{{weather.icon}} weather-icon"></i>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app='sidisi'>
+
+<head>
+    <% include ../views/components/head %>
+</head>
+
+<body ng-controller='SettingsController'>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header brown">
+            <div class="mdl-layout__header-row">
+                <a class="mdl-navigation__link" href="/"><i class="material-icons">keyboard_arrow_left</i></a>
+                <span class="mdl-layout-title"><%= title %></span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link clickable" ng-click="deleteSettings()"><i class="material-icons">delete</i></a>
+                    <a class="mdl-navigation__link clickable" ng-click="saveSettings()" ng-if="changed"><i class="material-icons">save</i></a>
+                    <a class="mdl-navigation__link" ng-if="!changed"><i class="material-icons">done</i></a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <% if (typeof action != "undefined") { %>
+                    <div ng-init="doSettings('<%= action %>')"></div>
+                    <% } %>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--2-col"></div>
+                            <div class="mdl-cell mdl-cell--8-col">
+                                <h4>News Plugin</h4>
+                                <form method="">
+                                    <div class="mdl-cell mdl-cell--12-col" ng-repeat='provider in newsProviders'>
+                                        <ul class="demo-list-control mdl-list">
+                                            <li class="mdl-list__item">
+                                                <span class="mdl-list__item-primary-content">{{provider.name}}</span>
+                                                <span class="mdl-list__item-secondary-action">
+                                        <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{provider.name}}">
+                                          <input type="radio" id="{{provider.name}}" class="mdl-radio__button" name="options" value="{{provider.url}}" ng-model="settings.news" ng-checked="settings.news == provider.url"/>
+                                        </label>
+                                    </span>
+                                            </li>
+                                        </ul>
+                                        <div class="mdl-cell mdl-cell--12-col" ng-show="settings.weather == provider.url" ng-repeat='option in provider.options'>
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="{{option.name}}" ng-model="settings.newsOptions[option.order]['value']">
+                                                <label class="mdl-textfield__label" for="{{option.name}}">{{option.name}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <h4>Weather Information</h4>
+                                <form method="">
+                                    <div class="mdl-cell mdl-cell--12-col" ng-repeat='provider in weatherProviders'>
+                                        <ul class="demo-list-control mdl-list">
+                                            <li class="mdl-list__item">
+                                                <span class="mdl-list__item-primary-content">{{provider.name}}</span>
+                                                <span class="mdl-list__item-secondary-action">
+                                          <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{provider.name}}">
+                                            <input type="radio" id="{{provider.name}}" class="mdl-radio__button" name="options" value="{{provider.url}}" ng-model="settings.weather" ng-checked="settings.weather == provider.url"/>
+                                          </label>
+                                        </span>
+                                            </li>
+                                        </ul>
+                                        <div class="mdl-cell mdl-cell--12-col" ng-show="settings.weather == provider.url" ng-repeat='option in provider.options'>
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="{{option.name}}" ng-model="settings.weatherOptions[option.order]['value']">
+                                                <label class="mdl-textfield__label" for="{{option.name}}">{{option.name}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <h4>Google Calendar</h4>
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="email" ng-model="settings.calendar">
+                                        <label class="mdl-textfield__label" for="email">Google Email Address</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </main>
+        </div>
+
+        <div id="toast-saved" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+
+        <% include ../views/components/scripts %>
+</body>
+
+</html>

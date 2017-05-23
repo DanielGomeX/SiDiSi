@@ -1,0 +1,13 @@
+{
+    "name": "SiDiSi",
+    "icons": [
+        {
+            "src": "/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#fefefe",
+    "background_color": "#fefefe",
+    "display": "standalone"
+}
